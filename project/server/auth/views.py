@@ -57,6 +57,13 @@ class RegisterAPI(MethodView):
             return make_response(jsonify(responseObject)), 202
 
 
+class UsersAPI(MethodView):
+    def get(self):
+        responseObject = {
+            "New API works!"
+        }
+        return make_response(jsonify(responseObject)), 201
+
 # define the API resources
 registration_view = RegisterAPI.as_view('register_api')
 
@@ -64,5 +71,14 @@ registration_view = RegisterAPI.as_view('register_api')
 auth_blueprint.add_url_rule(
     '/auth/register',
     view_func=registration_view,
+    methods=['POST', 'GET']
+)
+# New route (Part 1)
+
+users_view = UsersAPI.as_view('users_api')
+
+auth_blueprint.add_url_rule(
+    '/users/index',
+    view_func=users_view,
     methods=['POST', 'GET']
 )
