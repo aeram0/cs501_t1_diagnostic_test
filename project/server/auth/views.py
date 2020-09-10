@@ -60,7 +60,7 @@ class RegisterAPI(MethodView):
 class UsersAPI(MethodView):
     def get(self):
         responseObject = {
-            "New API works!"
+            'Hello World': "New API works!"
         }
         return make_response(jsonify(responseObject)), 201
 
