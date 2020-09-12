@@ -73,12 +73,14 @@ auth_blueprint.add_url_rule(
     view_func=registration_view,
     methods=['POST', 'GET']
 )
+
 # New route (Part 1)
 
+# define the API resources
 users_view = UsersAPI.as_view('users_api')
 
 auth_blueprint.add_url_rule(
     '/users/index',
     view_func=users_view,
-    methods=['POST', 'GET']
+    methods=['GET']
 )
