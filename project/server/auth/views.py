@@ -59,10 +59,14 @@ class RegisterAPI(MethodView):
 
 class UsersAPI(MethodView):
     def get(self):
-        responseObject = {
-            'Hello World': "New API works!"
-        }
-        return make_response(jsonify(responseObject)), 201
+        arr = []
+        email_query = db.session.query(User.email)
+        for item in email_query:
+            arr.append(item)
+        # responseObject = {
+        #     'email': "New API works!"
+        # }
+        return make_response(jsonify(arr)), 201
 
 # define the API resources
 registration_view = RegisterAPI.as_view('register_api')
