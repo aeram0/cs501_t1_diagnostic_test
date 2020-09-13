@@ -62,10 +62,7 @@ class UsersAPI(MethodView):
         arr = []
         email_query = db.session.query(User.email)
         for item in email_query:
-            arr.append(item)
-        # responseObject = {
-        #     'email': "New API works!"
-        # }
+            arr.append(item[0])
         return make_response(jsonify(arr)), 201
 
 # define the API resources
