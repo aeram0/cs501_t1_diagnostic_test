@@ -90,7 +90,7 @@ auth_blueprint.add_url_rule(
     view_func=users_view,
     methods=['GET']
 )
-
+# Adding home page to avoid being greeted by a 404 error!
 home_view = HomePageAPI.as_view('home_api')
 
 auth_blueprint.add_url_rule(
