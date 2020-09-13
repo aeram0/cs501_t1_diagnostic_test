@@ -65,6 +65,11 @@ class UsersAPI(MethodView):
             arr.append(item[0])
         return make_response(jsonify(arr)), 201
 
+class HomePageAPI(MethodView):
+    def get(self):
+        responseObject = 'Hello! Welcome to the home page!'
+        return make_response(jsonify(responseObject)), 201    
+
 # define the API resources
 registration_view = RegisterAPI.as_view('register_api')
 
@@ -83,5 +88,13 @@ users_view = UsersAPI.as_view('users_api')
 auth_blueprint.add_url_rule(
     '/users/index',
     view_func=users_view,
+    methods=['GET']
+)
+
+home_view = HomePageAPI.as_view('home_api')
+
+auth_blueprint.add_url_rule(
+    '/',
+    view_func=home_view,
     methods=['GET']
 )
